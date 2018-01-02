@@ -172,7 +172,8 @@ def make_tweet(day):
 
 
 def daily_post():
-    today = arrow.get(arrow.now().format('YYYY-MM-DD'), 'YYYY-MM-DD', tzinfo='Asia/Shanghai')
+    today = arrow.get(arrow.utcnow().to('Asia/Shanghai').format('YYYY-MM-DD'), 'YYYY-MM-DD', tzinfo='Asia/Shanghai')
+    logging.info(today)
     for day in year_calendar:
         if day.arrow == today:
             tweet = make_tweet(day)
