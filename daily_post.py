@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
 
+import os
+
 import tweepy
 import arrow
 
@@ -48,7 +50,7 @@ WORKDAYS_TEMPLATE = "今天是工作日，距离休息还有{next_rest_left}天"
 WEEKENDS_TEMPLATE = "今天是{day_type}，好好休息。距离上班还有{next_work}天.全年假日还剩{weekends_left}天。"
 
 
-with open("secret") as secret_file:
+with open(os.path.split(os.path.realpath(__file__))[0] + "/secret") as secret_file:
     key, secret, token, token_secret = [line.strip() for line in secret_file.readlines()]
 CONSUMERKEY, CONSUMERSECRET, ACCESSTOKEN, ACCESSTOKENSECRET = key, secret, token, token_secret
 
